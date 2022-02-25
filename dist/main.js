@@ -1,11 +1,3 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
@@ -16,7 +8,35 @@
   \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"AlertService\": () => (/* binding */ AlertService)\n/* harmony export */ });\n/* harmony import */ var _utils_inputs_are_valid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/inputs-are-valid */ \"./src/app/utils/inputs-are-valid.js\");\n\nclass AlertService {\n  constructor() {\n    this.errorBox = document.getElementById(\"error\");\n  }\n\n  handleAdditionError(inputs, numbers) {\n    const fullMessage = inputs.reduce((message, str, index) => {\n      if ((0,_utils_inputs_are_valid__WEBPACK_IMPORTED_MODULE_0__.inputsAreValid)(numbers[index])) {\n        return message + \"\";\n      } else {\n        return message + `${str} is not a number. `;\n      }\n    }, \"Please enter two valid numbers! \");\n\n    this.errorBox.classList.remove(\"invisible\");\n    this.errorBox.innerText = fullMessage;\n  }\n\n  hideErrors() {\n    this.errorBox.classList.add(\"invisible\");\n  }\n}\n\n\n//# sourceURL=webpack://code/./src/app/alert.service.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AlertService": () => (/* binding */ AlertService)
+/* harmony export */ });
+/* harmony import */ var _utils_inputs_are_valid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/inputs-are-valid */ "./src/app/utils/inputs-are-valid.js");
+
+class AlertService {
+  constructor() {
+    this.errorBox = document.getElementById("error");
+  }
+
+  handleAdditionError(inputs, numbers) {
+    const fullMessage = inputs.reduce((message, str, index) => {
+      if ((0,_utils_inputs_are_valid__WEBPACK_IMPORTED_MODULE_0__.inputsAreValid)(numbers[index])) {
+        return message + "";
+      } else {
+        return message + `${str} is not a number. `;
+      }
+    }, "Please enter two valid numbers! ");
+
+    this.errorBox.classList.remove("invisible");
+    this.errorBox.innerText = fullMessage;
+  }
+
+  hideErrors() {
+    this.errorBox.classList.add("invisible");
+  }
+}
+
 
 /***/ }),
 
@@ -26,7 +46,32 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"run\": () => (/* binding */ run)\n/* harmony export */ });\n/* harmony import */ var _utils_inputs_are_valid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/inputs-are-valid */ \"./src/app/utils/inputs-are-valid.js\");\n/* harmony import */ var _utils_parse_inputs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/parse-inputs */ \"./src/app/utils/parse-inputs.js\");\n\n\n\nconst run = (alertService, componentService) => {\n  alertService.hideErrors();\n\n  componentService.onClick(() => {\n    alertService.hideErrors();\n    const inputs = componentService.getInputs();\n    const parsedInputs = (0,_utils_parse_inputs__WEBPACK_IMPORTED_MODULE_1__.parseInputs)(...inputs);\n    if ((0,_utils_inputs_are_valid__WEBPACK_IMPORTED_MODULE_0__.inputsAreValid)(...parsedInputs)) {\n      const [numA, numB] = parsedInputs;\n      componentService.setResult(numA + numB);\n    } else {\n      componentService.setResult(\"\");\n      alertService.handleAdditionError(inputs, parsedInputs);\n    }\n  });\n};\n\n\n//# sourceURL=webpack://code/./src/app/app.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "run": () => (/* binding */ run)
+/* harmony export */ });
+/* harmony import */ var _utils_inputs_are_valid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/inputs-are-valid */ "./src/app/utils/inputs-are-valid.js");
+/* harmony import */ var _utils_parse_inputs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/parse-inputs */ "./src/app/utils/parse-inputs.js");
+
+
+
+const run = (alertService, componentService) => {
+  alertService.hideErrors();
+
+  componentService.onClick(() => {
+    alertService.hideErrors();
+    const inputs = componentService.getInputs();
+    const parsedInputs = (0,_utils_parse_inputs__WEBPACK_IMPORTED_MODULE_1__.parseInputs)(...inputs);
+    if ((0,_utils_inputs_are_valid__WEBPACK_IMPORTED_MODULE_0__.inputsAreValid)(...parsedInputs)) {
+      const [numA, numB] = parsedInputs;
+      componentService.setResult(numA + numB);
+    } else {
+      componentService.setResult("");
+      alertService.handleAdditionError(inputs, parsedInputs);
+    }
+  });
+};
+
 
 /***/ }),
 
@@ -36,7 +81,31 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"ComponentService\": () => (/* binding */ ComponentService)\n/* harmony export */ });\nclass ComponentService {\n  constructor() {\n    this.numberOneInput = document.getElementById(\"numberOne\");\n    this.numberTwoInput = document.getElementById(\"numberTwo\");\n    this.addValuesButton = document.getElementById(\"addValues\");\n    this.resultDiv = document.getElementById(\"result\");\n  }\n\n  getInputs() {\n    return [this.numberOneInput.value, this.numberTwoInput.value];\n  }\n\n  setResult(str) {\n    this.resultDiv.innerText = str;\n  }\n\n  onClick(cb) {\n    this.addValuesButton.addEventListener(\"click\", cb);\n  }\n}\n\n\n//# sourceURL=webpack://code/./src/app/component.service.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ComponentService": () => (/* binding */ ComponentService)
+/* harmony export */ });
+class ComponentService {
+  constructor() {
+    this.numberOneInput = document.getElementById("numberOne");
+    this.numberTwoInput = document.getElementById("numberTwo");
+    this.addValuesButton = document.getElementById("addValues");
+    this.resultDiv = document.getElementById("result");
+  }
+
+  getInputs() {
+    return [this.numberOneInput.value, this.numberTwoInput.value];
+  }
+
+  setResult(str) {
+    this.resultDiv.innerText = str;
+  }
+
+  onClick(cb) {
+    this.addValuesButton.addEventListener("click", cb);
+  }
+}
+
 
 /***/ }),
 
@@ -46,7 +115,14 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"inputsAreValid\": () => (/* binding */ inputsAreValid)\n/* harmony export */ });\nconst inputsAreValid = (...input) => {\n  return input.every(num => typeof num === \"number\" && !isNaN(num));\n};\n\n\n//# sourceURL=webpack://code/./src/app/utils/inputs-are-valid.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "inputsAreValid": () => (/* binding */ inputsAreValid)
+/* harmony export */ });
+const inputsAreValid = (...input) => {
+  return input.every(num => typeof num === "number" && !isNaN(num));
+};
+
 
 /***/ }),
 
@@ -56,17 +132,14 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"parseInputs\": () => (/* binding */ parseInputs)\n/* harmony export */ });\nconst parseInputs = (...input) => {\n  return input.map(str => parseInt(str));\n};\n\n\n//# sourceURL=webpack://code/./src/app/utils/parse-inputs.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "parseInputs": () => (/* binding */ parseInputs)
+/* harmony export */ });
+const parseInputs = (...input) => {
+  return input.map(str => parseInt(str));
+};
 
-/***/ }),
-
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _app_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app/app */ \"./src/app/app.js\");\n/* harmony import */ var _app_alert_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app/alert.service */ \"./src/app/alert.service.js\");\n/* harmony import */ var _app_component_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/component.service */ \"./src/app/component.service.js\");\n\n\n\n\nconst alertService = new _app_alert_service__WEBPACK_IMPORTED_MODULE_1__.AlertService();\nconst componentService = new _app_component_service__WEBPACK_IMPORTED_MODULE_2__.ComponentService();\n\n(0,_app_app__WEBPACK_IMPORTED_MODULE_0__.run)(alertService, componentService);\n\n\n\n//# sourceURL=webpack://code/./src/index.js?");
 
 /***/ })
 
@@ -126,11 +199,27 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _app
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
-/******/ 	
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app/app */ "./src/app/app.js");
+/* harmony import */ var _app_alert_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app/alert.service */ "./src/app/alert.service.js");
+/* harmony import */ var _app_component_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/component.service */ "./src/app/component.service.js");
+
+
+
+
+const alertService = new _app_alert_service__WEBPACK_IMPORTED_MODULE_1__.AlertService();
+const componentService = new _app_component_service__WEBPACK_IMPORTED_MODULE_2__.ComponentService();
+
+(0,_app_app__WEBPACK_IMPORTED_MODULE_0__.run)(alertService, componentService);
+
+
+})();
+
 /******/ })()
 ;

@@ -1,0 +1,21 @@
+{
+  "name": "webpack-demo-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/Yaciuk/webpack-start.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yaciuk/webpack-start/issues"
+  },
+  "homepage": "https://github.com/Yaciuk/webpack-start#readme"
+}

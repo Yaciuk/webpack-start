@@ -11,7 +11,7 @@ module.exports = {
     clean: true
   },
   plugins: [new HtmlWebpackPlugin({
-      template: "./src/template.html",
+      template: "./src/index.html",
       scriptLoading: "module",
       inject: "body"
     })

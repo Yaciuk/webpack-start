@@ -5,8 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js --open",
-    "build": "webpack --config webpack.prod.js "
+    "start": "webpack serve --config webpack.dev.js",
+    "build": "webpack serve --config webpack.prod.js"
   },
   "keywords": [],
   "author": "",
@@ -19,9 +19,7 @@
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.69.1",
-    "webpack-cli": "^4.7.2"
-  },
-  "dependencies": {
+    "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^4.7.4",
     "webpack-merge": "^5.8.0"
   }

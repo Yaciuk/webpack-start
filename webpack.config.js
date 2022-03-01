@@ -1,20 +1,27 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require("path");
+
 module.exports = {
   mode: "development",
   devtool: false,
   entry: "./src/index.js",
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "dist")
+    filename: "main.[contenthash].js",
+    path: path.resolve(__dirname, "dist"),
+    clean: true
   },
+  plugins: [new HtmlWebpackPlugin({
+      template: "./src/template.html",
+      scriptLoading: "module",
+      inject: "body"
+    })
+  ],
   module: {
     rules: [
       {
         test: /\.scss$/i,
         use: ["style-loader", "css-loader", "sass-loader"]
-        /*1. sass-loader turns sass to css, 2. css-loader turns css to 
-        common.js, and then 3. style-loader injects styles into the DOM */
       },
     ],
-  },
+  }
 };

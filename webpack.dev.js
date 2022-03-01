@@ -7,9 +7,12 @@ module.exports = merge (common, {
   devServer: {
     static: './dist',
   },
+  devtool: false,
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
-    clean: true
+    assetModuleFilename: "images/[name][ext]",
+    publicPath: './',
+    clean: true,
   }
 });

@@ -4,9 +4,12 @@ const { merge } = require("webpack-merge");
 
 module.exports = merge (common, {
   mode: "production",
+  devtool: false,
   output: {
     filename: "main.[contenthash].js",
     path: path.resolve(__dirname, "dist"),
-    clean: true
+    assetModuleFilename: "images/[name].[hash][ext]",
+    publicPath: './',
+    clean: true,
   }
 });

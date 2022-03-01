@@ -11,7 +11,7 @@ module.exports = {
     clean: true
   },
   plugins: [new HtmlWebpackPlugin({
-      template: "./src/index.html",
+      template: "./src/template.html",
       scriptLoading: "module",
       inject: "body"
     })
@@ -23,5 +23,5 @@ module.exports = {
         use: ["style-loader", "css-loader", "sass-loader"]
       },
     ],
-  }
+  },
 };
